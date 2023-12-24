@@ -1,5 +1,5 @@
 import os
-import logging 
+import logging
 from pyrogram import Client
 from config import Config 
 
@@ -19,7 +19,7 @@ if ENV:
     API_ID=int(os.environ.get("API_ID",""))
     API_HASH=str(os.environ.get("API_HASH",""))
     TOKEN=str(os.environ.get("TOKEN",""))
-    SUDO = list(int(i) for i in os.environ.get("SUDO", "6691393517").split(" "))
+    SUDO = [int(i) for i in os.environ.get("SUDO", "6691393517").split(" ")]
     START_IMG=str(os.environ.get("START_IMG",""))
     BOT_ID=int(os.environ.get("BOT_ID",""))
     BOT_USERNAME=str(os.environ.get("BOT_USERNAME",""))

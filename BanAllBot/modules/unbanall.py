@@ -4,19 +4,19 @@ from pyrogram import filters,enums
 
 @app.on_message(filters.command("unbanall") & filters.user(SUDO))
 async def unban_all(_,msg):
-    chat_id=msg.chat.id   
-    x = 0
+    chat_id=msg.chat.id
     bot=await app.get_chat_member(chat_id,BOT_ID)
-    bot_permission=bot.privileges.can_restrict_members==True 
+    bot_permission=bot.privileges.can_restrict_members==True
     if bot_permission:
         banned_users = []
+        x = 0
         async for m in app.get_chat_members(chat_id, filter=enums.ChatMembersFilter.BANNED):
             banned_users.append(m.user.id)       
             try:
                     await app.unban_chat_member(chat_id,banned_users[x])
                     await msg.reply_text(f"ᴜɴʙᴀɴɪɴɢ ᴀʟʟ ᴍᴄ ɪɴ ᴛʜɪs ɢʀᴏᴜᴘ {m.user.mention}")
                     x += 1
-                                        
+
             except Exception:
                 pass
     else:
